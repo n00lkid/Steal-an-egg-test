@@ -1,0 +1,48 @@
+-- [[ n00lkid411 - Epic Black Screen Hub ]] --
+local CoreGui = game:GetService("CoreGui")
+local SoundService = game:GetService("SoundService")
+
+-- Eski UI varsa temizle amk
+pcall(function()
+    if CoreGui:FindFirstChild("NoolkidBlackScreen") then
+        CoreGui.NoolkidBlackScreen:Destroy()
+    end
+end)
+
+-- Siyah Ekran GUI'sini Oluşturalım
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "NoolkidBlackScreen"
+ScreenGui.Parent = CoreGui
+ScreenGui.IgnoreGuiInset = true
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Size = UDim2.new(1, 0, 1, 0)
+MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+MainFrame.BorderSizePixel = 0
+MainFrame.Parent = ScreenGui
+
+-- Ortadaki Havalı Yazı
+local TextLabel = Instance.new("TextLabel")
+TextLabel.Size = UDim2.new(0, 600, 0, 100)
+TextLabel.Position = UDim2.new(0.5, -300, 0.5, -50)
+TextLabel.BackgroundTransparency = 1
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 36
+TextLabel.Font = Enum.Font.GothamBold
+TextLabel.Text = "n00lkid411 made it"
+TextLabel.Parent = MainFrame
+
+-- Ses Efekti (God Bless You Sesi - Roblox Audio ID)
+pcall(function()
+    local Sound = Instance.new("Sound")
+    -- Alternatif temiz bir ses ID'si veya kulak çınlatan ses efekti
+    Sound.SoundId = "rbxassetid://9114221317" -- Örnek ses efekti ID'si
+    Sound.Volume = 5
+    Sound.Parent = SoundService
+    Sound:Play()
+end)
+
+-- 5 saniye sonra siyah ekranı kaldırsın
+task.delay(5, function()
+    ScreenGui:Destroy()
+end)
